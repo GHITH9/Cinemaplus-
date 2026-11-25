@@ -1,0 +1,6 @@
+{
+  "name": "سينما غيثان - Cinema Ghaithan",
+  "description": "تطبيق سينما غيثان الأصلي لمشاهدة وإدارة الأفلام، متوافق كلياً كـ APK و PWA مع لوحة تحكم سحابية للمطور ونظام رفع مجزأ للملفات الضخمة حتى 5 جيجابايت.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

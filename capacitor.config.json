@@ -1,0 +1,15 @@
+{
+  "appId": "com.ghaithan.cinema",
+  "appName": "سينما غيثان",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https",
+    "cleartext": true
+  },
+  "android": {
+    "allowMixedContent": true,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": true
+  }
+}

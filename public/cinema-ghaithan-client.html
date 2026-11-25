@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>سينما غيثان - نسخة العميل</title>
+  <meta name="description" content="تطبيق سينما غيثان الأصلي للمشاهدين والعملاء - مشاهدة أحدث الأفلام بأعلى جودة." />
+  <meta name="theme-color" content="#070a12" />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Cairo', 'Tajawal', system-ui, sans-serif;
+      background-color: #070a12;
+      color: #f1f5f9;
+      direction: rtl;
+      text-align: right;
+    }
+    .text-gold-gradient {
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .cinema-pattern {
+      background-image: radial-gradient(rgba(245, 158, 11, 0.08) 1px, transparent 1px), radial-gradient(rgba(255, 255, 255, 0.04) 1px, #070a12 1px);
+      background-size: 40px 40px;
+      background-position: 0 0, 20px 20px;
+    }
+  </style>
+</head>
+<body class="bg-[#070a12] text-slate-100 min-h-screen flex flex-col">
+
+  <!-- 1. Mandatory Top Bar: Copyright & WhatsApp -->
+  <div class="bg-[#0b101d] border-b border-white/5 px-4 py-2 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2">
+        <span class="text-[11px] sm:text-xs font-medium text-amber-400/90 tracking-wide">
+          حقوق الطبع والنشر © غيثان باحاج
+        </span>
+      </div>
+
+      <!-- WhatsApp Contacts -->
+      <div class="flex items-center gap-3 sm:gap-4 flex-wrap">
+        <span class="text-[11px] text-slate-400 hidden xs:inline">للتواصل عبر واتساب:</span>
+        
+        <a href="https://wa.me/966535187121" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-[11px] sm:text-xs text-emerald-400 hover:text-emerald-300 transition-colors font-mono dir-ltr">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.976.58 1.954.925 3.149.926 3.18 0 5.767-2.587 5.768-5.766 0-3.181-2.587-5.768-5.768-5.768zm0 10.375c-1.037 0-1.896-.282-2.756-.79l-.2-.12-1.332.35.356-1.299-.13-.207c-.552-.876-.844-1.78-.844-2.543 0-2.538 2.067-4.605 4.606-4.605 2.539 0 4.606 2.067 4.606 4.605 0 2.539-2.067 4.606-4.606 4.606z"/></svg>
+          <span>+966 53 518 7121</span>
+        </a>
+
+        <span class="text-slate-600">|</span>
+
+        <a href="https://wa.me/967772908480" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-[11px] sm:text-xs text-emerald-400 hover:text-emerald-300 transition-colors font-mono dir-ltr">
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.976.58 1.954.925 3.149.926 3.18 0 5.767-2.587 5.768-5.766 0-3.181-2.587-5.768-5.768-5.768zm0 10.375c-1.037 0-1.896-.282-2.756-.79l-.2-.12-1.332.35.356-1.299-.13-.207c-.552-.876-.844-1.78-.844-2.543 0-2.538 2.067-4.605 4.606-4.605 2.539 0 4.606 2.067 4.606 4.605 0 2.539-2.067 4.606-4.606 4.606z"/></svg>
+          <span>+967 77 290 8480</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Header Bar -->
+  <header class="sticky top-0 z-40 bg-[#070a12]/95 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+      <!-- Logo -->
+      <div class="flex items-center gap-2.5">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-700 flex items-center justify-center text-slate-950 font-black shadow-lg shadow-amber-500/20">
+          🎬
+        </div>
+        <div class="flex flex-col text-right">
+          <span class="text-xl font-black text-white">سينما غيثان</span>
+        </div>
+      </div>
+
+      <!-- Search -->
+      <div class="flex-1 max-w-md mx-2 sm:mx-6">
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="ابحث عن فيلم، تصنيف، أو قصة..."
+          class="w-full bg-[#121828] text-sm text-slate-100 placeholder-slate-400 rounded-full py-2 px-4 border border-white/10 focus:border-amber-500 focus:outline-none"
+        />
+      </div>
+    </div>
+
+    <!-- Genre filter pills -->
+    <div class="bg-[#0a0f1d]/70 px-4 py-2 overflow-x-auto border-t border-white/5">
+      <div id="genresContainer" class="max-w-7xl mx-auto flex items-center gap-1.5 min-w-max">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. Main Content Grid -->
+  <main class="flex-1 max-w-7xl mx-auto w-full px-4 py-8">
+    <div id="moviesGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      <!-- Injected via JS -->
+    </div>
+
+    <!-- Empty State -->
+    <div id="emptyState" class="hidden min-h-[60vh] flex flex-col items-center justify-center text-center p-6 space-y-4">
+      <div class="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-2xl text-amber-400">
+        🎬
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-black text-white">
+        مرحباً بك في <span class="text-gold-gradient">سينما غيثان</span>
+      </h2>
+      <p class="text-sm text-slate-300 max-w-md leading-relaxed">
+        المنصة مهيأة وبانتظار إضافة الأفلام من قبل المطور لتظهر للجميع هنا.
+      </p>
+
+      <a href="developer.html" class="px-8 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs shadow-lg transition-all">
+        نسخة
+      </a>
+    </div>
+  </main>
+
+  <!-- 4. Video Player Modal -->
+  <div id="playerModal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-3">
+    <div class="relative w-full max-w-4xl bg-[#0c1220] border border-white/10 rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[92vh]">
+      <div class="flex items-center justify-between px-4 py-3 bg-[#080d18] border-b border-white/5">
+        <h3 id="modalTitle" class="font-bold text-white text-base">عنوان الفيلم</h3>
+        <button onclick="closePlayerModal()" class="text-slate-400 hover:text-white p-1">✕</button>
+      </div>
+
+      <div class="aspect-video w-full bg-black flex items-center justify-center">
+        <video id="modalVideo" controls class="w-full h-full object-contain"></video>
+      </div>
+
+      <div class="p-4 sm:p-5 space-y-3 text-right">
+        <div class="flex items-center justify-between border-b border-white/5 pb-2 text-xs text-slate-300">
+          <div class="flex items-center gap-3">
+            <span id="modalRating" class="text-amber-400 font-bold font-mono">⭐ 8.5 / 10</span>
+            <span id="modalDuration" class="font-mono">120 دقيقة</span>
+            <span id="modalGenre" class="bg-white/10 px-2 py-0.5 rounded">حركة</span>
+          </div>
+          <button onclick="shareWhatsApp()" class="text-emerald-400 hover:underline">مشاركة عبر واتساب</button>
+        </div>
+        <p id="modalDescription" class="text-xs text-slate-300 leading-relaxed"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Footer -->
+  <footer class="border-t border-white/5 bg-[#05080e] py-6 px-4 text-xs text-slate-400 text-center">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>حقوق الطبع والنشر © غيثان باحاج. سينما غيثان.</div>
+      <div class="flex items-center gap-3 flex-wrap justify-center">
+        <a href="https://remix-cinema-plus-5101.ai.studio" target="_blank" rel="noopener noreferrer" class="text-amber-300 hover:text-amber-200 dir-ltr font-mono">https://remix-cinema-plus-5101.ai.studio</a>
+        <span>·</span>
+        <a href="https://wa.me/966535187121" target="_blank" class="hover:text-emerald-400 dir-ltr font-mono">+966 53 518 7121</a>
+        <span>·</span>
+        <a href="https://wa.me/967772908480" target="_blank" class="hover:text-emerald-400 dir-ltr font-mono">+967 77 290 8480</a>
+        <span>·</span>
+        <a href="developer.html" class="text-amber-400 hover:underline font-bold">نسخة</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const OFFICIAL_SITE_URL = 'https://remix-cinema-plus-5101.ai.studio';
+    const API_BASE = window.location.protocol === 'file:' ? OFFICIAL_SITE_URL : '';
+    const resolveMediaUrl = (u) => (u && u.startsWith('/api/') && API_BASE ? `${API_BASE}${u}` : u);
+
+    const GENRES = ['الكل', 'حركة وإثارة', 'دراما', 'كوميديا', 'خيال علمي', 'وثائقي', 'مغامرات', 'عائلي', 'رسوم متحركة', 'رعب وتشويق', 'تاريخي'];
+    let currentGenre = 'الكل';
+    let searchQuery = '';
+    let movies = [];
+    let currentMovie = null;
+
+    // Load Movies
+    async function loadMovies() {
+      try {
+        const res = await fetch(`${API_BASE}/api/movies`, { cache: 'no-store' });
+        if (res.ok) {
+          movies = await res.json();
+          localStorage.setItem('ghaithan_movies_cache', JSON.stringify(movies));
+        } else {
+          fallbackLoad();
+        }
+      } catch (e) {
+        fallbackLoad();
+      }
+      render();
+    }
+
+    function fallbackLoad() {
+      const cached = localStorage.getItem('ghaithan_movies_cache');
+      movies = cached ? JSON.parse(cached) : [];
+    }
+
+    // Render Genres
+    function renderGenres() {
+      const c = document.getElementById('genresContainer');
+      c.innerHTML = GENRES.map(g => `
+        <button onclick="setGenre('${g}')" class="px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap transition-all ${currentGenre === g ? 'bg-amber-500 text-slate-950 font-bold' : 'bg-white/5 text-slate-300 hover:bg-white/10'}">
+          ${g}
+        </button>
+      `).join('');
+    }
+
+    function setGenre(g) {
+      currentGenre = g;
+      renderGenres();
+      render();
+    }
+
+    // Render Movie Grid
+    function render() {
+      const grid = document.getElementById('moviesGrid');
+      const empty = document.getElementById('emptyState');
+
+      const filtered = movies.filter(m => {
+        if (m.status === 'draft') return false;
+        const matchesSearch = !searchQuery || m.title.toLowerCase().includes(searchQuery.toLowerCase()) || (m.description && m.description.toLowerCase().includes(searchQuery.toLowerCase()));
+        const matchesGenre = currentGenre === 'الكل' || m.genre === currentGenre || (m.genre && m.genre.includes(currentGenre));
+        return matchesSearch && matchesGenre;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '';
+        empty.classList.remove('hidden');
+        return;
+      }
+
+      empty.classList.add('hidden');
+      grid.innerHTML = filtered.map(m => `
+        <div onclick="openPlayer('${m.id}')" class="group relative flex flex-col rounded-xl overflow-hidden bg-[#0e1424] border border-white/5 hover:border-amber-500/40 shadow-lg cursor-pointer transform hover:-translate-y-1 transition-all">
+          <div class="relative aspect-[2/3] w-full bg-[#151c2e] overflow-hidden">
+            ${m.coverImage ? `<img src="${resolveMediaUrl(m.coverImage)}" alt="${m.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />` : `<div class="w-full h-full flex items-center justify-center text-3xl">🎬</div>`}
+            <div class="absolute top-2 left-2 bg-black/75 px-2 py-0.5 rounded text-[11px] font-mono font-bold text-amber-400">⭐ ${m.rating || '8.0'}</div>
+            <div class="absolute top-2 right-2 bg-amber-500 text-slate-950 px-2 py-0.5 rounded text-[10px] font-black">${m.genre || 'عام'}</div>
+            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
+              <div class="w-12 h-12 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center text-lg font-bold shadow-lg">▶</div>
+            </div>
+          </div>
+          <div class="p-3 text-right">
+            <h3 class="font-bold text-sm text-white line-clamp-1 group-hover:text-amber-400 transition-colors">${m.title}</h3>
+            <p class="text-[11px] text-slate-400 line-clamp-2 mt-1 leading-relaxed">${m.description || 'لا يوجد وصف.'}</p>
+            <div class="flex items-center justify-between text-[10px] text-slate-500 mt-2 pt-2 border-t border-white/5 font-mono">
+              <span>⏱ ${m.duration || 'غير محدد'}</span>
+              <span>مشاهدة الآن</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openPlayer(id) {
+      currentMovie = movies.find(m => m.id === id);
+      if (!currentMovie) return;
+      document.getElementById('modalTitle').innerText = currentMovie.title;
+      document.getElementById('modalRating').innerText = `⭐ ${currentMovie.rating || 8.0} / 10`;
+      document.getElementById('modalDuration').innerText = currentMovie.duration || '120 دقيقة';
+      document.getElementById('modalGenre').innerText = currentMovie.genre || 'عام';
+      document.getElementById('modalDescription').innerText = currentMovie.description || '';
+      
+      const v = document.getElementById('modalVideo');
+      v.src = resolveMediaUrl(currentMovie.videoUrl || '');
+      if (currentMovie.coverImage) v.poster = resolveMediaUrl(currentMovie.coverImage);
+      
+      document.getElementById('playerModal').classList.remove('hidden');
+      v.play().catch(() => {});
+    }
+
+    function closePlayerModal() {
+      const v = document.getElementById('modalVideo');
+      v.pause();
+      v.src = '';
+      document.getElementById('playerModal').classList.add('hidden');
+    }
+
+    function shareWhatsApp() {
+      if (!currentMovie) return;
+      const t = encodeURIComponent(`شاهد فيلم «${currentMovie.title}» الآن على سينما غيثان!\n${currentMovie.description}\n${OFFICIAL_SITE_URL}`);
+      window.open(`https://wa.me/?text=${t}`, '_blank');
+    }
+
+    // Search event
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      searchQuery = e.target.value.trim();
+      render();
+    });
+
+    renderGenres();
+    loadMovies();
+    window.addEventListener('focus', loadMovies);
+    setInterval(() => {
+      if (!document.hidden) loadMovies();
+    }, 30000);
+  </script>
+</body>
+</html>

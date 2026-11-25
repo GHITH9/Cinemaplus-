@@ -1,0 +1,29 @@
+{
+  "id": "/",
+  "name": "سينما غيثان - Cinema Ghaithan",
+  "short_name": "سينما غيثان",
+  "description": "تطبيق سينما غيثان الأصلي لمشاهدة وإدارة الأفلام، متوافق كلياً كـ APK و PWA مع لوحة تحكم سحابية للمطور ونظام رفع مجزأ للملفات الضخمة حتى 5 جيجابايت.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#070a12",
+  "theme_color": "#090d16",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["entertainment", "movies", "video"]
+}

@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>سينما غيثان - Cinema Ghaithan</title>
+  <meta name="description" content="تطبيق سينما غيثان - منصة السينما والأفلام الأصلية مع استوديو المطوّر لرفع الأفلام حتى 5 جيجابايت">
+  <!-- Google Fonts: Cairo & Tajawal -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Cairo', 'Tajawal', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            cinema: {
+              950: '#05070d',
+              900: '#070a12',
+              800: '#0d1322',
+              700: '#141c33',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Cairo', 'Tajawal', system-ui, sans-serif;
+      background-color: #070a12;
+      color: #f1f5f9;
+      direction: rtl;
+      text-align: right;
+      overflow-x: hidden;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090e1b;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #f59e0b;
+    }
+    .cinematic-glow {
+      box-shadow: 0 0 50px -10px rgba(245, 158, 11, 0.25);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-[#070a12] text-slate-100 selection:bg-amber-500/30 selection:text-amber-200">
+
+  <!-- ================= TOP HEADER (COPYRIGHT & WHATSAPP) ================= -->
+  <header class="border-b border-white/10 bg-[#090e1b]/95 backdrop-blur-md sticky top-0 z-40">
+    <div className="bg-[#05070d] border-b border-white/5 py-1.5 px-4 text-xs" style="background:#05070d; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 6px 16px;">
+      <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 text-[11px] sm:text-xs">
+        <span class="text-slate-400 font-medium">حقوق الطبع والنشر © غيثان باحاج</span>
+        <div class="flex items-center gap-3 sm:gap-5 flex-wrap">
+          <a href="https://wa.me/966535187121" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-slate-300 hover:text-emerald-400 transition-colors font-mono dir-ltr">
+            <svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.187-2.59-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.303-.058.116-.087.188-.173.289l-.26.302c-.087.088-.18.183-.077.36.104.177.461.76 1.026 1.264.726.647 1.341.85 1.531.937.19.087.302.072.415-.058.113-.13.488-.567.618-.761.13-.194.26-.162.433-.098.173.064 1.096.517 1.284.611.188.094.313.14.359.219.046.079.046.457-.098.862z"/></svg>
+            <span>+966 53 518 7121</span>
+          </a>
+          <a href="https://wa.me/967772908480" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-slate-300 hover:text-emerald-400 transition-colors font-mono dir-ltr">
+            <svg class="w-3.5 h-3.5 text-emerald-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.187-2.59-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.303-.058.116-.087.188-.173.289l-.26.302c-.087.088-.18.183-.077.36.104.177.461.76 1.026 1.264.726.647 1.341.85 1.531.937.19.087.302.072.415-.058.113-.13.488-.567.618-.761.13-.194.26-.162.433-.098.173.064 1.096.517 1.284.611.188.094.313.14.359.219.046.079.046.457-.098.862z"/></svg>
+            <span>+967 77 290 8480</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      <!-- Brand Logo -->
+      <div class="flex items-center gap-3 shrink-0 cursor-pointer" onclick="switchView('client')">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 via-amber-500 to-amber-700 flex items-center justify-center shadow-lg shadow-amber-500/20 text-slate-950 font-black">
+          <svg class="w-5 h-5 text-slate-950" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 3v18M17 3v18M3 7.5h4M3 12h18M3 16.5h4M17 7.5h4M17 16.5h4"/></svg>
+        </div>
+        <div class="flex flex-col text-right">
+          <span id="navTitle" class="text-xl sm:text-2xl font-black tracking-tight text-white">سينما غيثان</span>
+          <span class="text-[10px] uppercase font-semibold text-amber-500/80 tracking-widest -mt-1 hidden sm:block">CINEMA GHAITHAN</span>
+        </div>
+      </div>
+
+      <!-- Search in Client Mode -->
+      <div id="searchBarContainer" class="flex-1 max-w-md mx-2 sm:mx-6">
+        <div class="relative">
+          <input
+            id="searchInput"
+            type="text"
+            oninput="handleSearch(this.value)"
+            placeholder="ابحث عن فيلم، تصنيف، أو قصة..."
+            class="w-full bg-[#121828]/80 text-sm text-slate-100 placeholder-slate-400 rounded-full py-2 pr-10 pl-4 border border-white/10 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20 transition-all text-right"
+          />
+          <svg class="w-4 h-4 text-slate-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </div>
+      </div>
+
+      <!-- Mode Switch Action Button -->
+      <div class="flex items-center gap-2">
+        <button
+          id="modeSwitchBtn"
+          onclick="toggleMode()"
+          class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-amber-300 text-xs font-bold transition-all"
+        >
+          <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span id="modeSwitchText">نسخة</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Category Filter Bar (Client View) -->
+    <div id="categoriesBar" class="bg-[#0a0f1d]/80 px-4 py-2 overflow-x-auto border-t border-white/5 scrollbar-none">
+      <div id="genresList" class="max-w-7xl mx-auto flex items-center gap-1.5 min-w-max">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= CLIENT VIEW (CINEMA EXPERIENCE) ================= -->
+  <main id="clientView" class="flex-1 max-w-7xl mx-auto w-full px-4 sm:px-6 py-8">
+    <!-- Hero / Atmospheric Banner -->
+    <div class="relative overflow-hidden rounded-3xl bg-[#090d19] border border-white/10 p-6 sm:p-10 mb-10 text-center cinematic-glow">
+      <div class="relative z-10 max-w-2xl mx-auto space-y-4">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-bold">
+          🎬 مرحباً بكم في سينما غيثان
+        </div>
+        <h1 class="text-3xl sm:text-5xl font-black text-white leading-tight">
+          أجواء السينما الحقيقية <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500">بين يديك</span>
+        </h1>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          تطبيق سينمائي أصلي وخفيف لعرض ومشاهدة أحدث الأفلام بجودة فائقة وبدون أي إعلانات مزعجة.
+        </p>
+      </div>
+    </div>
+
+    <!-- Empty State or Movies Grid -->
+    <div id="moviesContainer">
+      <!-- Injected via JavaScript -->
+    </div>
+  </main>
+
+  <!-- ================= DEVELOPER STUDIO (PIN PROTECTED) ================= -->
+  <main id="developerView" class="hidden flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 py-8">
+    <!-- PIN Auth Screen -->
+    <div id="authScreen" class="max-w-md mx-auto py-12 px-6 rounded-3xl bg-[#0a0f1e] border border-amber-500/30 shadow-2xl text-center space-y-6">
+      <div class="w-16 h-16 rounded-2xl bg-amber-500/15 border border-amber-500/40 text-amber-400 flex items-center justify-center mx-auto shadow-lg shadow-amber-500/10">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      <div>
+        <h2 class="text-2xl font-black text-white">استوديو المطوّر</h2>
+        <p class="text-xs text-slate-400 mt-1.5 leading-relaxed">
+          لوحة خاصة بالمطور لرفع الأفلام حتى 5 جيجابايت والتحكم بالبيانات
+        </p>
+      </div>
+
+      <form onsubmit="handleAuthSubmit(event)" class="space-y-4 text-right">
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-2">رمز المرور السري للمطوّر</label>
+          <input
+            id="pinInput"
+            type="password"
+            placeholder="أدخل رمز المرور"
+            class="w-full bg-[#121c35] text-center tracking-widest font-mono text-2xl text-white rounded-xl py-3.5 px-4 border border-white/10 focus:border-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
+            autofocus
+          />
+        </div>
+        <div id="authError" class="hidden p-3 rounded-xl bg-red-500/15 border border-red-500/30 text-red-300 text-xs"></div>
+        <button
+          type="submit"
+          class="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-sm shadow-lg shadow-amber-500/25 active:scale-95 transition-all"
+        >
+          دخول إلى استوديو المطوّر
+        </button>
+      </form>
+    </div>
+
+    <!-- Studio Dashboard (Shown after unlock) -->
+    <div id="dashboardScreen" class="hidden space-y-6">
+      <!-- Tabs Header -->
+      <div class="flex items-center justify-between flex-wrap gap-4 bg-[#0a0f1d] p-3 rounded-2xl border border-white/10">
+        <div class="flex items-center gap-2 overflow-x-auto">
+          <button id="tabBtn-upload" onclick="switchStudioTab('upload')" class="px-4 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 shadow-md">
+            ➕ إضافة ورفع فيلم 5GB
+          </button>
+          <button id="tabBtn-manage" onclick="switchStudioTab('manage')" class="px-4 py-2 rounded-xl text-xs font-bold bg-white/5 text-slate-300 hover:bg-white/10">
+            🎬 إدارة الأفلام والمسودات
+          </button>
+          <button id="tabBtn-simulator" onclick="switchStudioTab('simulator')" class="px-4 py-2 rounded-xl text-xs font-bold bg-white/5 text-slate-300 hover:bg-white/10">
+            ⚡ تجربة محاكي الرفع 5GB
+          </button>
+          <button id="tabBtn-storage" onclick="switchStudioTab('storage')" class="px-4 py-2 rounded-xl text-xs font-bold bg-white/5 text-slate-300 hover:bg-white/10">
+            ☁️ دليل الاستضافة السحابية
+          </button>
+        </div>
+        <button onclick="handleLogout()" class="px-3 py-1.5 rounded-lg bg-red-500/15 hover:bg-red-500/25 text-red-400 text-xs font-bold border border-red-500/30">
+          قفل الاستوديو
+        </button>
+      </div>
+
+      <!-- Tab 1: Upload / Add Movie -->
+      <div id="tabContent-upload" class="bg-[#0b1020] border border-white/10 rounded-3xl p-6 sm:p-8 space-y-6">
+        <div class="border-b border-white/10 pb-4">
+          <h3 class="text-xl font-black text-white">إضافة فيلم جديد مع محرك الرفع المجزأ حتى 5GB</h3>
+          <p class="text-xs text-slate-400 mt-1">يدعم رفع ملفات الفيديو الكبيرة مقسمة لأجزاء قابلة للاستئناف عند انقطاع الشبكة</p>
+        </div>
+
+        <form onsubmit="handleSaveMovie(event)" class="space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1.5">عنوان الفيلم *</label>
+              <input id="movieTitle" required type="text" placeholder="مثال: رحلة في أعماق الصحراء" class="w-full bg-[#121a30] text-sm text-white rounded-xl p-3 border border-white/10 focus:border-amber-500 focus:outline-none" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1.5">التصنيف / النوع *</label>
+              <select id="movieGenre" class="w-full bg-[#121a30] text-sm text-white rounded-xl p-3 border border-white/10 focus:border-amber-500 focus:outline-none">
+                <option value="حركة وإثارة">حركة وإثارة</option>
+                <option value="دراما">دراما</option>
+                <option value="كوميديا">كوميديا</option>
+                <option value="خيال علمي">خيال علمي</option>
+                <option value="وثائقي">وثائقي</option>
+                <option value="مغامرات">مغامرات</option>
+                <option value="عائلي">عائلي</option>
+                <option value="رسوم متحركة">رسوم متحركة</option>
+                <option value="رعب وتشويق">رعب وتشويق</option>
+                <option value="تاريخي">تاريخي</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1.5">المدة *</label>
+              <input id="movieDuration" required type="text" placeholder="مثال: ساعتان و 15 دقيقة" class="w-full bg-[#121a30] text-sm text-white rounded-xl p-3 border border-white/10 focus:border-amber-500 focus:outline-none" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-300 mb-1.5">التقييم (من 1 إلى 10) *</label>
+              <input id="movieRating" required type="number" min="1" max="10" step="0.1" value="8.5" class="w-full bg-[#121a30] text-sm text-white rounded-xl p-3 border border-white/10 focus:border-amber-500 focus:outline-none" />
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1.5">رابط صورة الغلاف / البوستر (URL أو Base64) *</label>
+            <input id="movieCover" required type="text" placeholder="https://example.com/poster.jpg أو ارفع صورة بالأسفل" class="w-full bg-[#121a30] text-sm text-white rounded-xl p-3 border border-white/10 focus:border-amber-500 focus:outline-none mb-2" />
+            <input type="file" accept="image/*" onchange="handleCoverFile(this)" class="text-xs text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-white/10 file:text-white hover:file:bg-white/20" />
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-300 mb-1.5">قصة / وصف الفيلم *</label>
+            <textarea id="movieDesc" rows="3" required placeholder="اكتب ملخصاً جذاباً لقصة الفيلم..." class="w-full bg-[#121a30] text-sm text-white rounded-xl p-3 border border-white/10 focus:border-amber-500 focus:outline-none"></textarea>
+          </div>
+
+          <!-- Video File Upload Section (Up to 5GB) -->
+          <div class="p-5 rounded-2xl bg-[#090d19] border border-amber-500/20 space-y-4">
+            <div class="flex items-center justify-between flex-wrap gap-2">
+              <span class="text-sm font-bold text-amber-400 flex items-center gap-2">
+                📹 رفع ملف الفيديو (حتى 5GB من الجوال أو الكمبيوتر)
+              </span>
+              <span class="text-[11px] bg-amber-500/15 text-amber-300 px-2.5 py-1 rounded-full border border-amber-500/30">
+                تقطيع فوري مجزأ + استئناف
+              </span>
+            </div>
+
+            <input
+              id="videoFileInput"
+              type="file"
+              accept="video/*"
+              onchange="handleVideoFileSelect(this)"
+              class="block w-full text-xs text-slate-400 file:ml-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-amber-500 file:text-slate-950 hover:file:bg-amber-400 cursor-pointer"
+            />
+
+            <!-- Upload Progress Dashboard -->
+            <div id="uploadDashboard" class="hidden space-y-3 p-4 rounded-xl bg-black/40 border border-white/10">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span id="uploadPercent" class="text-amber-400 font-bold text-sm">0%</span>
+                <span id="uploadSpeed" class="text-slate-300">0.0 MB/s</span>
+                <span id="uploadETA" class="text-slate-400">الوقت المتبقي: --</span>
+              </div>
+              <div class="w-full h-3 bg-slate-800 rounded-full overflow-hidden border border-white/10">
+                <div id="uploadProgressBar" class="h-full bg-gradient-to-r from-amber-500 to-amber-400 transition-all duration-300 w-0"></div>
+              </div>
+              <div class="flex items-center justify-between text-[11px] text-slate-400">
+                <span id="uploadBytes">0 MB / 0 MB</span>
+                <div class="flex items-center gap-2">
+                  <button type="button" id="pauseResumeBtn" onclick="togglePauseUpload()" class="px-3 py-1 rounded bg-white/10 hover:bg-white/20 text-white font-bold">إيقاف مؤقت</button>
+                  <button type="button" onclick="cancelUpload()" class="px-3 py-1 rounded bg-red-500/20 hover:bg-red-500/30 text-red-300 font-bold">إلغاء</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Or Video Stream URL -->
+            <div class="pt-2">
+              <label class="block text-xs font-bold text-slate-400 mb-1">أو أدخل رابط فيديو سحابي مباشر (Cloudflare R2 / B2 / MP4 / HLS):</label>
+              <input id="movieVideoUrl" type="url" placeholder="https://pub-your-bucket.r2.dev/movie.mp4" class="w-full bg-[#121a30] text-sm text-white rounded-xl p-2.5 border border-white/10 focus:border-amber-500 focus:outline-none" />
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3 pt-2">
+            <button
+              type="submit"
+              onclick="setPublishStatus('published')"
+              class="flex-1 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-sm shadow-lg shadow-amber-500/20 active:scale-95 transition-all"
+            >
+              🚀 نشر الفيلم الآن في السينما
+            </button>
+            <button
+              type="submit"
+              onclick="setPublishStatus('draft')"
+              class="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 text-white font-bold text-sm transition-all"
+            >
+              💾 حفظ كمسودة
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Tab 2: Manage Movies -->
+      <div id="tabContent-manage" class="hidden bg-[#0b1020] border border-white/10 rounded-3xl p-6 sm:p-8 space-y-6">
+        <div class="flex items-center justify-between flex-wrap gap-2 border-b border-white/10 pb-4">
+          <div>
+            <h3 class="text-xl font-black text-white">إدارة قائمة الأفلام والمسودات</h3>
+            <p class="text-xs text-slate-400 mt-1">تعديل البيانات، المعاينة، نشر المسودات، أو الحذف النهائي</p>
+          </div>
+          <span id="manageCount" class="text-xs font-bold px-3 py-1 bg-amber-500/20 text-amber-300 rounded-full border border-amber-500/30">
+            0 أفلام
+          </span>
+        </div>
+
+        <div id="manageMoviesList" class="space-y-3">
+          <!-- Injected via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Tab 3: 5GB Stress Test Simulator -->
+      <div id="tabContent-simulator" class="hidden bg-[#0b1020] border border-white/10 rounded-3xl p-6 sm:p-8 space-y-6">
+        <div class="border-b border-white/10 pb-4">
+          <h3 class="text-xl font-black text-white">محاكي اختبار سرعة واستئناف رفع 5 جيجابايت</h3>
+          <p class="text-xs text-slate-400 mt-1">اختبر سرعة التقطيع، شريط التقدم، واختبار انقطاع الاتصال والاستئناف بدقة تامة</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <button onclick="startSimulation(1)" class="p-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 text-center space-y-1">
+            <span class="text-lg font-black text-amber-400 block">1 جيجابايت</span>
+            <span class="text-xs text-slate-400 block">اختبار ملف عادي (1,024 MB)</span>
+          </button>
+          <button onclick="startSimulation(3)" class="p-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 text-center space-y-1">
+            <span class="text-lg font-black text-amber-400 block">3 جيجابايت</span>
+            <span class="text-xs text-slate-400 block">اختبار ملف عالي الدقة (3,072 MB)</span>
+          </button>
+          <button onclick="startSimulation(5)" class="p-4 rounded-2xl bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 text-center space-y-1">
+            <span class="text-lg font-black text-amber-300 block">5 جيجابايت كاملة</span>
+            <span class="text-xs text-slate-300 block">اختبار الحد الأقصى (5,120 MB)</span>
+          </button>
+        </div>
+
+        <div id="simDashboard" class="hidden space-y-4 p-5 rounded-2xl bg-black/50 border border-amber-500/30">
+          <div class="flex items-center justify-between text-xs font-mono">
+            <span id="simPercent" class="text-amber-400 font-bold text-base">0%</span>
+            <span id="simSpeed" class="text-slate-200">0 MB/s</span>
+            <span id="simETA" class="text-slate-400">المتبقي: --</span>
+          </div>
+          <div class="w-full h-3.5 bg-slate-800 rounded-full overflow-hidden border border-white/10">
+            <div id="simProgressBar" class="h-full bg-gradient-to-r from-amber-500 to-emerald-400 transition-all duration-200 w-0"></div>
+          </div>
+          <div class="flex items-center justify-between text-xs text-slate-300">
+            <span id="simBytes">0 MB / 0 MB</span>
+            <div class="flex items-center gap-2">
+              <button id="simPauseBtn" onclick="toggleSimPause()" class="px-3.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white font-bold">إيقاف مؤقت</button>
+              <button onclick="stopSim()" class="px-3.5 py-1.5 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-300 font-bold">إنهاء التجربة</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Cloud Storage Guide -->
+      <div id="tabContent-storage" class="hidden bg-[#0b1020] border border-white/10 rounded-3xl p-6 sm:p-8 space-y-6 leading-relaxed">
+        <div class="border-b border-white/10 pb-4">
+          <h3 class="text-xl font-black text-white">دليل خوادم واستضافة الأفلام السحابية (5GB+) وتكاليفها</h3>
+          <p class="text-xs text-slate-400 mt-1">أفضل الخيارات الموصى بها لتخزين وبث ملفات الفيديو بدون تكلفة خيالية</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3">
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-amber-400 text-sm">1. Cloudflare R2 (الخيار الأفضل والمجاني)</h4>
+              <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold text-[10px]">مجاني + بدون رسوم بث</span>
+            </div>
+            <p class="text-slate-300">
+              - مساحة مجانية دائمة 10 جيجابايت شهرياً.<br>
+              - <strong>بدون أي رسوم على الباندويث (Zero Egress Fees):</strong> يشاهد زوارك الأفلام مليون مرة دون دفع سنت واحد على البث.<br>
+              - التكلفة بعد 10GB: فقط 0.015$ لكل جيجابايت إضافي شهرياً.
+            </p>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 space-y-3">
+            <div class="flex items-center justify-between">
+              <h4 class="font-bold text-amber-400 text-sm">2. Backblaze B2</h4>
+              <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold text-[10px]">10GB مجاناً</span>
+            </div>
+            <p class="text-slate-300">
+              - 10 جيجابايت تخزين مجاني دائم.<br>
+              - عند ربطه مع Cloudflare CDN يصبح البث مجانياً تماماً بدون تكلفة نقل بيانات.<br>
+              - تكلفة التخزين الإضافي: 0.006$ لكل جيجابايت (أرخص تخزين في العالم).
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= MOVIE PLAYER MODAL ================= -->
+  <div id="playerModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-lg">
+    <div class="relative w-full max-w-4xl bg-[#0a0f1e] border border-amber-500/40 rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[92vh]">
+      <div class="flex items-center justify-between px-6 py-4 bg-[#0e162d] border-b border-white/10">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div>
+            <h3 id="modalTitle" class="font-bold text-white text-base">عنوان الفيلم</h3>
+            <span id="modalMeta" class="text-xs text-amber-400">التصنيف • المدة</span>
+          </div>
+        </div>
+        <button onclick="closePlayerModal()" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition-colors">
+          ✕
+        </button>
+      </div>
+
+      <div class="p-4 sm:p-6 space-y-4 overflow-y-auto">
+        <!-- Video Screen -->
+        <div class="relative aspect-video rounded-2xl overflow-hidden bg-black border border-white/10">
+          <video id="mainVideoPlayer" controls class="w-full h-full object-contain bg-black"></video>
+        </div>
+
+        <div class="space-y-2 text-right">
+          <h4 class="text-sm font-bold text-white">قصة الفيلم:</h4>
+          <p id="modalDesc" class="text-xs text-slate-300 leading-relaxed"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="border-t border-white/5 bg-[#05080e] py-8 px-4 text-xs text-slate-400 mt-auto">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-right">
+      <div>
+        <div class="flex items-center justify-center sm:justify-start gap-2 mb-1">
+          <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+          <span id="footerTitle" class="font-bold text-white text-sm">سينما غيثان (نسخة المشاهدين)</span>
+        </div>
+        <p class="text-[11px] text-slate-400">حقوق الطبع والنشر © غيثان باحاج. جميع الحقوق محفوظة.</p>
+      </div>
+
+      <div class="flex items-center gap-4 flex-wrap justify-center font-mono dir-ltr">
+        <a href="https://remix-cinema-plus-5101.ai.studio" target="_blank" rel="noopener noreferrer" class="text-amber-300 hover:text-amber-200 transition-colors">https://remix-cinema-plus-5101.ai.studio</a>
+        <span>•</span>
+        <a href="https://wa.me/966535187121" target="_blank" class="hover:text-emerald-400 transition-colors">+966 53 518 7121</a>
+        <span>•</span>
+        <a href="https://wa.me/967772908480" target="_blank" class="hover:text-emerald-400 transition-colors">+967 77 290 8480</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= JAVASCRIPT APP LOGIC ================= -->
+  <script>
+    // Constants & State
+    const OFFICIAL_SITE_URL = 'https://remix-cinema-plus-5101.ai.studio';
+    const API_BASE = window.location.protocol === 'file:' ? OFFICIAL_SITE_URL : '';
+    const resolveMediaUrl = (u) => (u && u.startsWith('/api/') && API_BASE ? `${API_BASE}${u}` : u);
+    const MAX_VIDEO_BYTES = 5 * 1024 * 1024 * 1024;
+    const CHUNK_SIZE = 5 * 1024 * 1024;
+    const SECRET_PIN = '7121'; // PIN updated to 7121 without any hint
+    const GENRES = ['الكل', 'حركة وإثارة', 'دراما', 'كوميديا', 'خيال علمي', 'وثائقي', 'مغامرات', 'عائلي', 'رسوم متحركة', 'رعب وتشويق', 'تاريخي'];
+    
+    let currentMode = 'client'; // 'client' | 'developer'
+    let selectedGenre = 'الكل';
+    let searchQuery = '';
+    let targetPublishStatus = 'published';
+    let coverBase64 = '';
+    let moviesCache = [];
+    let simInterval = null;
+    let isSimPaused = false;
+    let isUploadPaused = false;
+    let isUploadCancelled = false;
+    let isUploadingActive = false;
+    let currentUploadId = null;
+    let uploadedChunks = new Set();
+    let totalChunksCount = 0;
+
+    function getStoredMovies() {
+      if (moviesCache.length > 0) return moviesCache;
+      try {
+        const raw = localStorage.getItem('ghaithan_movies_cache');
+        return raw ? JSON.parse(raw) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    async function loadMovies() {
+      try {
+        const res = await fetch(`${API_BASE}/api/movies`, { cache: 'no-store' });
+        if (res.ok) {
+          moviesCache = await res.json();
+          localStorage.setItem('ghaithan_movies_cache', JSON.stringify(moviesCache));
+        }
+      } catch (e) {}
+      renderClientMovies();
+      renderManageList();
+    }
+
+    // Initialize App
+    window.addEventListener('DOMContentLoaded', () => {
+      renderGenres();
+      loadMovies();
+      window.addEventListener('focus', loadMovies);
+      setInterval(() => {
+        if (!document.hidden) loadMovies();
+      }, 30000);
+
+      // Check URL mode param
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('mode') === 'developer') {
+        switchView('developer');
+      }
+
+      // Check session auth
+      if (sessionStorage.getItem('ghaithan_dev_auth') === 'true') {
+        showDashboard();
+      }
+    });
+
+    // Switch View
+    function switchView(mode) {
+      currentMode = mode;
+      const clientView = document.getElementById('clientView');
+      const developerView = document.getElementById('developerView');
+      const searchBar = document.getElementById('searchBarContainer');
+      const catBar = document.getElementById('categoriesBar');
+      const navTitle = document.getElementById('navTitle');
+      const footerTitle = document.getElementById('footerTitle');
+      const modeBtnText = document.getElementById('modeSwitchText');
+
+      if (mode === 'developer') {
+        clientView.classList.add('hidden');
+        developerView.classList.remove('hidden');
+        searchBar.classList.add('hidden');
+        catBar.classList.add('hidden');
+        navTitle.innerText = 'استوديو غيثان';
+        footerTitle.innerText = 'استوديو سينما غيثان (نسخة المطوّر)';
+        modeBtnText.innerText = 'نسخة';
+      } else {
+        developerView.classList.add('hidden');
+        clientView.classList.remove('hidden');
+        searchBar.classList.remove('hidden');
+        catBar.classList.remove('hidden');
+        navTitle.innerText = 'سينما غيثان';
+        footerTitle.innerText = 'سينما غيثان (نسخة المشاهدين)';
+        modeBtnText.innerText = 'نسخة';
+      }
+    }
+
+    function toggleMode() {
+      switchView(currentMode === 'client' ? 'developer' : 'client');
+    }
+
+    // Genres Render
+    function renderGenres() {
+      const container = document.getElementById('genresList');
+      container.innerHTML = `
+        <span class="text-xs text-slate-400 ml-2 font-medium">الأقسام:</span>
+        ${GENRES.map(g => `
+          <button
+            onclick="setGenre('${g}')"
+            class="px-3 py-1 rounded-full text-xs font-medium transition-all whitespace-nowrap ${
+              selectedGenre === g
+                ? 'bg-amber-500 text-slate-950 font-bold shadow-sm shadow-amber-500/30'
+                : 'bg-white/5 text-slate-300 hover:bg-white/10'
+            }"
+          >
+            ${g}
+          </button>
+        `).join('')}
+      `;
+    }
+
+    function setGenre(g) {
+      selectedGenre = g;
+      renderGenres();
+      renderClientMovies();
+    }
+
+    function handleSearch(val) {
+      searchQuery = val.trim().toLowerCase();
+      renderClientMovies();
+    }
+
+    // Render Client Movies (Initially empty until user adds)
+    function renderClientMovies() {
+      const container = document.getElementById('moviesContainer');
+      const allMovies = getStoredMovies().filter(m => m.status === 'published');
+      
+      const filtered = allMovies.filter(m => {
+        const matchesGenre = selectedGenre === 'الكل' || m.genre === selectedGenre;
+        const matchesSearch = !searchQuery || 
+          m.title.toLowerCase().includes(searchQuery) || 
+          m.description.toLowerCase().includes(searchQuery) ||
+          m.genre.toLowerCase().includes(searchQuery);
+        return matchesGenre && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="py-16 px-6 text-center rounded-3xl bg-[#090d19]/60 border border-white/5 space-y-4 max-w-xl mx-auto">
+            <div class="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400 flex items-center justify-center mx-auto">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 3v18M17 3v18M3 7.5h4M3 12h18M3 16.5h4M17 7.5h4M17 16.5h4"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-white">لا توجد أفلام معروضة حالياً</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              التطبيق يبدأ فارغاً وفق طلبك حتى تقوم بإضافة ورفع أفلامك بنفسك عبر استوديو المطوّر.
+            </p>
+            <button
+              onclick="switchView('developer')"
+              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-black text-xs transition-all shadow-lg shadow-amber-500/20"
+            >
+              دخول استوديو الرفع لإضافة فيلم ➕
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = `
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+          ${filtered.map(m => `
+            <div
+              onclick="openPlayerModal('${m.id}')"
+              class="group relative rounded-2xl overflow-hidden bg-[#0a0f1d] border border-white/10 hover:border-amber-500/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-amber-500/10 cursor-pointer flex flex-col"
+            >
+              <div class="relative aspect-[2/3] w-full overflow-hidden bg-slate-900">
+                <img
+                  src="${resolveMediaUrl(m.coverImage || '') || 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800'}"
+                  alt="${m.title}"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#070a12] via-transparent to-transparent opacity-80"></div>
+                <div class="absolute top-2.5 left-2.5 bg-black/70 backdrop-blur-md px-2 py-0.5 rounded-md text-[10px] font-bold text-amber-400 border border-amber-500/30 flex items-center gap-1">
+                  ★ ${m.rating}
+                </div>
+                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 backdrop-blur-[2px]">
+                  <div class="w-12 h-12 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+                    <svg class="w-6 h-6 mr-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="p-3 text-right flex-1 flex flex-col justify-between">
+                <div>
+                  <h4 class="font-bold text-white text-xs sm:text-sm line-clamp-1 group-hover:text-amber-400 transition-colors">${m.title}</h4>
+                  <div class="flex items-center gap-2 text-[10px] text-slate-400 mt-1">
+                    <span>${m.genre}</span>
+                    <span>•</span>
+                    <span>${m.duration}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    // Player Modal
+    function openPlayerModal(id) {
+      const movie = getStoredMovies().find(m => m.id === id);
+      if (!movie) return;
+
+      document.getElementById('modalTitle').innerText = movie.title;
+      document.getElementById('modalMeta').innerText = `${movie.genre} • ${movie.duration} • ★ ${movie.rating}/10`;
+      document.getElementById('modalDesc').innerText = movie.description;
+
+      const video = document.getElementById('mainVideoPlayer');
+      video.src = resolveMediaUrl(movie.videoUrl || '');
+      if (movie.coverImage) video.poster = resolveMediaUrl(movie.coverImage);
+      document.getElementById('playerModal').classList.remove('hidden');
+      video.play().catch(() => {});
+    }
+
+    function closePlayerModal() {
+      const video = document.getElementById('mainVideoPlayer');
+      video.pause();
+      video.src = '';
+      document.getElementById('playerModal').classList.add('hidden');
+    }
+
+    // Developer Auth (PIN: 7121 without any hint)
+    function handleAuthSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('pinInput').value.trim();
+      const err = document.getElementById('authError');
+
+      if (input === SECRET_PIN) {
+        sessionStorage.setItem('ghaithan_dev_auth', 'true');
+        err.classList.add('hidden');
+        showDashboard();
+      } else {
+        err.innerText = 'رمز المرور غير صحيح';
+        err.classList.remove('hidden');
+      }
+    }
+
+    function showDashboard() {
+      document.getElementById('authScreen').classList.add('hidden');
+      document.getElementById('dashboardScreen').classList.remove('hidden');
+      renderManageList();
+    }
+
+    function handleLogout() {
+      sessionStorage.removeItem('ghaithan_dev_auth');
+      document.getElementById('dashboardScreen').classList.add('hidden');
+      document.getElementById('authScreen').classList.remove('hidden');
+      document.getElementById('pinInput').value = '';
+    }
+
+    // Studio Tabs
+    function switchStudioTab(tab) {
+      ['upload', 'manage', 'simulator', 'storage'].forEach(t => {
+        document.getElementById(`tabContent-${t}`).classList.toggle('hidden', t !== tab);
+        const btn = document.getElementById(`tabBtn-${t}`);
+        if (t === tab) {
+          btn.className = 'px-4 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 shadow-md';
+        } else {
+          btn.className = 'px-4 py-2 rounded-xl text-xs font-bold bg-white/5 text-slate-300 hover:bg-white/10';
+        }
+      });
+      if (tab === 'manage') renderManageList();
+    }
+
+    // Cover Image File
+    async function handleCoverFile(input) {
+      if (input.files && input.files[0]) {
+        const file = input.files[0];
+        try {
+          const ext = (file.name.match(/\.[a-zA-Z0-9]+$/) || ['.jpg'])[0];
+          const res = await fetch(`${API_BASE}/api/upload/image`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/octet-stream', 'x-image-ext': ext },
+            body: file
+          });
+          if (res.ok) {
+            const data = await res.json();
+            if (data.imageUrl) {
+              coverBase64 = data.imageUrl;
+              document.getElementById('movieCover').value = data.imageUrl;
+              return;
+            }
+          }
+        } catch (err) {}
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          coverBase64 = e.target.result;
+          document.getElementById('movieCover').value = coverBase64;
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    // Video Upload Engine (Real Server Chunked & Resumable up to 5GB)
+    let selectedVideoFile = null;
+    function handleVideoFileSelect(input) {
+      if (input.files && input.files[0]) {
+        const file = input.files[0];
+        if (file.size > MAX_VIDEO_BYTES) {
+          alert('عذراً، الحد الأقصى لحجم الفيلم هو 5 جيجابايت (5GB).');
+          input.value = '';
+          return;
+        }
+        selectedVideoFile = file;
+        currentUploadId = null;
+        uploadedChunks.clear();
+        isUploadCancelled = false;
+        isUploadPaused = false;
+        document.getElementById('uploadDashboard').classList.remove('hidden');
+        startRealUpload(selectedVideoFile);
+      }
+    }
+
+    async function startRealUpload(file) {
+      if (!file) return;
+      isUploadingActive = true;
+      isUploadPaused = false;
+      isUploadCancelled = false;
+      totalChunksCount = Math.max(1, Math.ceil(file.size / CHUNK_SIZE));
+      const totalBytes = file.size;
+      const startTime = Date.now();
+
+      const pBar = document.getElementById('uploadProgressBar');
+      const pPercent = document.getElementById('uploadPercent');
+      const pSpeed = document.getElementById('uploadSpeed');
+      const pETA = document.getElementById('uploadETA');
+      const pBytes = document.getElementById('uploadBytes');
+
+      pPercent.className = 'text-amber-400 font-bold text-sm';
+      document.getElementById('pauseResumeBtn').innerText = 'إيقاف مؤقت';
+
+      if (!currentUploadId) {
+        try {
+          const initRes = await fetch(`${API_BASE}/api/upload/init`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              fileName: file.name,
+              fileSize: file.size,
+              totalChunks: totalChunksCount,
+              chunkSize: CHUNK_SIZE
+            })
+          });
+          if (!initRes.ok) throw new Error('Init failed');
+          const initData = await initRes.json();
+          currentUploadId = initData.uploadId;
+        } catch (err) {
+          isUploadingActive = false;
+          pPercent.innerText = 'تعذر الاتصال بالخادم';
+          pPercent.className = 'text-red-400 font-bold text-sm';
+          return;
+        }
+      }
+
+      let uploadedBytes = uploadedChunks.size * CHUNK_SIZE;
+      for (let i = 0; i < totalChunksCount; i++) {
+        if (isUploadPaused || isUploadCancelled) {
+          isUploadingActive = false;
+          return;
+        }
+        if (uploadedChunks.has(i)) continue;
+
+        const start = i * CHUNK_SIZE;
+        const end = Math.min(start + CHUNK_SIZE, totalBytes);
+        const chunk = file.slice(start, end);
+        const actualSize = end - start;
+
+        let ok = false;
+        for (let attempt = 1; attempt <= 5; attempt++) {
+          if (isUploadPaused || isUploadCancelled) {
+            isUploadingActive = false;
+            return;
+          }
+          try {
+            const res = await fetch(`${API_BASE}/api/upload/chunk`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/octet-stream',
+                'x-upload-id': currentUploadId,
+                'x-chunk-index': String(i),
+                'x-total-chunks': String(totalChunksCount),
+                'x-total-size': String(totalBytes)
+              },
+              body: chunk
+            });
+            if (res.ok) { ok = true; break; }
+          } catch (e) {}
+          await new Promise(r => setTimeout(r, Math.min(8000, attempt * 1000)));
+        }
+
+        if (!ok) {
+          isUploadingActive = false;
+          isUploadPaused = true;
+          document.getElementById('pauseResumeBtn').innerText = 'استئناف الرفع ▶';
+          pETA.innerText = 'توقف الاتصال — اضغط استئناف للمتابعة';
+          return;
+        }
+
+        uploadedChunks.add(i);
+        uploadedBytes = Math.min(totalBytes, uploadedBytes + actualSize);
+        const pct = Math.min(100, Math.round((uploadedChunks.size / totalChunksCount) * 100));
+        pBar.style.width = pct + '%';
+        pPercent.innerText = pct + '%';
+
+        const elapsedSec = Math.max(0.1, (Date.now() - startTime) / 1000);
+        const speedMBs = (uploadedBytes / elapsedSec) / (1024 * 1024);
+        pSpeed.innerText = `${speedMBs.toFixed(1)} MB/s`;
+        pBytes.innerText = `${(uploadedBytes / (1024 * 1024 * 1024)).toFixed(2)} GB / ${(totalBytes / (1024 * 1024 * 1024)).toFixed(2)} GB`;
+
+        const remainingBytes = Math.max(0, totalBytes - uploadedBytes);
+        const etaSec = speedMBs > 0 ? Math.round((remainingBytes / (1024 * 1024)) / speedMBs) : 0;
+        pETA.innerText = `الوقت المتبقي: ${etaSec} ثانية تقريباً`;
+      }
+
+      pETA.innerText = 'جاري تجميع الفيلم على الخادم ليشاهده الجميع...';
+      try {
+        const completeRes = await fetch(`${API_BASE}/api/upload/complete`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ uploadId: currentUploadId, totalChunks: totalChunksCount, fileName: file.name })
+        });
+        if (!completeRes.ok) throw new Error('Merge failed');
+        const completeData = await completeRes.json();
+        document.getElementById('movieVideoUrl').value = completeData.videoUrl || `/api/video/${currentUploadId}`;
+        pPercent.innerText = '100% (اكتمل الرفع على الخادم بنجاح!)';
+        pPercent.className = 'text-emerald-400 font-bold text-sm';
+        pETA.innerText = 'جاهز للنشر لجميع الزوار';
+        currentUploadId = null;
+        uploadedChunks.clear();
+      } catch (err) {
+        pPercent.innerText = 'فشل التجميع النهائي — اضغط استئناف';
+        pPercent.className = 'text-red-400 font-bold text-sm';
+      } finally {
+        isUploadingActive = false;
+      }
+    }
+
+    function togglePauseUpload() {
+      isUploadPaused = !isUploadPaused;
+      document.getElementById('pauseResumeBtn').innerText = isUploadPaused ? 'استئناف الرفع ▶' : 'إيقاف مؤقت';
+      if (!isUploadPaused && selectedVideoFile && !isUploadingActive) {
+        startRealUpload(selectedVideoFile);
+      }
+    }
+
+    function cancelUpload() {
+      isUploadCancelled = true;
+      isUploadPaused = true;
+      isUploadingActive = false;
+      currentUploadId = null;
+      uploadedChunks.clear();
+      selectedVideoFile = null;
+      document.getElementById('uploadDashboard').classList.add('hidden');
+      document.getElementById('videoFileInput').value = '';
+    }
+
+    function setPublishStatus(s) {
+      targetPublishStatus = s;
+    }
+
+    // Save Movie
+    async function handleSaveMovie(e) {
+      e.preventDefault();
+      if (isUploadingActive) {
+        alert('يرجى انتظار اكتمال رفع وتجميع الفيلم على الخادم قبل النشر.');
+        return;
+      }
+      const title = document.getElementById('movieTitle').value.trim();
+      const genre = document.getElementById('movieGenre').value;
+      const duration = document.getElementById('movieDuration').value.trim();
+      const rating = parseFloat(document.getElementById('movieRating').value) || 8.0;
+      const cover = document.getElementById('movieCover').value.trim();
+      const desc = document.getElementById('movieDesc').value.trim();
+      const video = document.getElementById('movieVideoUrl').value.trim();
+
+      if (targetPublishStatus === 'published' && (!video || video.startsWith('blob:'))) {
+        alert('يرجى انتظار اكتمال رفع ملف الفيديو إلى الخادم أو إدخال رابط فيديو مباشر صالح قبل النشر.');
+        return;
+      }
+
+      const newMovie = {
+        id: 'mov_' + Date.now(),
+        title,
+        genre,
+        duration,
+        rating,
+        coverImage: cover,
+        description: desc,
+        videoUrl: video,
+        fileSize: selectedVideoFile ? selectedVideoFile.size : 0,
+        status: targetPublishStatus,
+        createdAt: new Date().toISOString()
+      };
+
+      try {
+        const res = await fetch(`${API_BASE}/api/movies`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newMovie)
+        });
+        if (!res.ok) throw new Error('Save failed');
+        await loadMovies();
+        alert(targetPublishStatus === 'published' ? 'تم نشر الفيلم بنجاح ليظهر لجميع المشاهدين!' : 'تم حفظ الفيلم كمسودة بنجاح!');
+        e.target.reset();
+        cancelUpload();
+        switchStudioTab('manage');
+      } catch (err) {
+        alert('فشل حفظ الفيلم على الخادم. تأكد من الاتصال بالإنترنت.');
+      }
+    }
+
+    // Manage List
+    function renderManageList() {
+      const container = document.getElementById('manageMoviesList');
+      const movies = getStoredMovies();
+      document.getElementById('manageCount').innerText = `${movies.length} فيلم`;
+
+      if (movies.length === 0) {
+        container.innerHTML = `
+          <div class="p-8 text-center bg-white/[0.02] rounded-2xl border border-white/5 text-slate-400 text-xs">
+            لا توجد أفلام حتى الآن. ابدأ بإضافة فيلم من التبويب أعلاه.
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = movies.map(m => `
+        <div class="flex items-center justify-between p-3.5 rounded-2xl bg-[#090d19] border border-white/10 hover:border-white/20 transition-all flex-wrap gap-3">
+          <div class="flex items-center gap-3">
+            <img src="${resolveMediaUrl(m.coverImage || '') || 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=200'}" class="w-12 h-16 object-cover rounded-lg bg-slate-900 border border-white/10" />
+            <div>
+              <div class="flex items-center gap-2">
+                <h4 class="font-bold text-white text-sm">${m.title}</h4>
+                <span class="text-[10px] px-2 py-0.5 rounded-full font-bold ${
+                  m.status === 'published' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                }">
+                  ${m.status === 'published' ? 'منشور للجميع' : 'مسودة'}
+                </span>
+              </div>
+              <div class="text-[11px] text-slate-400 mt-1 flex items-center gap-2">
+                <span>${m.genre}</span>
+                <span>•</span>
+                <span>${m.duration}</span>
+                <span>•</span>
+                <span>★ ${m.rating}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button onclick="openPlayerModal('${m.id}')" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-bold">
+              معاينة
+            </button>
+            <button onclick="toggleMovieStatus('${m.id}')" class="px-3 py-1.5 rounded-lg ${m.status === 'published' ? 'bg-amber-500/20 text-amber-300' : 'bg-emerald-500/20 text-emerald-300'} text-xs font-bold">
+              ${m.status === 'published' ? 'تحويل لمسودة' : 'نشر'}
+            </button>
+            <button onclick="deleteMovie('${m.id}')" class="px-3 py-1.5 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-300 text-xs font-bold">
+              حذف
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function toggleMovieStatus(id) {
+      const target = getStoredMovies().find(m => m.id === id);
+      if (!target) return;
+      const nextStatus = target.status === 'published' ? 'draft' : 'published';
+      if (nextStatus === 'published' && (!target.videoUrl || target.videoUrl.startsWith('blob:'))) {
+        alert('لا يمكن نشر فيلم بدون ملف فيديو مرفوع على الخادم.');
+        return;
+      }
+      await fetch(`${API_BASE}/api/movies/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: nextStatus })
+      }).catch(() => {});
+      await loadMovies();
+    }
+
+    async function deleteMovie(id) {
+      if (confirm('هل أنت متأكد من رغبتك في حذف هذا الفيلم نهائياً؟')) {
+        await fetch(`${API_BASE}/api/movies/${id}`, { method: 'DELETE' }).catch(() => {});
+        await loadMovies();
+      }
+    }
+
+    // 5GB Stress Test Simulator
+    function startSimulation(gb) {
+      const totalMB = gb * 1024;
+      let uploadedMB = 0;
+      isSimPaused = false;
+      document.getElementById('simPauseBtn').innerText = 'إيقاف مؤقت';
+      document.getElementById('simDashboard').classList.remove('hidden');
+
+      const pBar = document.getElementById('simProgressBar');
+      const pPercent = document.getElementById('simPercent');
+      const pSpeed = document.getElementById('simSpeed');
+      const pETA = document.getElementById('simETA');
+      const pBytes = document.getElementById('simBytes');
+
+      clearInterval(simInterval);
+      simInterval = setInterval(() => {
+        if (isSimPaused) return;
+
+        // Progress increment
+        uploadedMB += (gb * 18);
+        if (uploadedMB >= totalMB) {
+          uploadedMB = totalMB;
+          clearInterval(simInterval);
+          pPercent.innerText = `100% (تمت تجربة محاكاة رفع ${gb}GB بنجاح)`;
+          pETA.innerText = 'اكتملت المحاكاة';
+        }
+
+        const pct = Math.min(100, Math.round((uploadedMB / totalMB) * 100));
+        pBar.style.width = pct + '%';
+        pPercent.innerText = pct + '%';
+        pSpeed.innerText = `${(35 + Math.random() * 15).toFixed(1)} MB/s`;
+        pBytes.innerText = `${(uploadedMB / 1024).toFixed(2)} GB / ${gb.toFixed(2)} GB`;
+        pETA.innerText = `المتبقي: ${Math.max(0, Math.round((totalMB - uploadedMB) / 45))} ثانية`;
+      }, 200);
+    }
+
+    function toggleSimPause() {
+      isSimPaused = !isSimPaused;
+      document.getElementById('simPauseBtn').innerText = isSimPaused ? 'استئناف المحاكاة ▶' : 'إيقاف مؤقت';
+    }
+
+    function stopSim() {
+      clearInterval(simInterval);
+      document.getElementById('simDashboard').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
